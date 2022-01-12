@@ -1,370 +1,401 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="slider_area">
+    <div class="slider_active owl-carousel">
+        {% for slideImage in slideImages %}
+        <div class="single_slider  d-flex align-items-center slider_bg_1 overlay" style="background-image: url({{slideImage.image.crop.1870x600}});">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-12 col-md-12">
+                        <div class="slider_text text-center">
+                            <h3>Kerala</h3>
+                            <p>Exploring The Beauty Of God’s Own Country</p>
+                            <a href="#" class="boxed-btn3 explore">Explore Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Sree Holidays</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo.svg">
+<div class="where_togo_area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <div class="form_area">
+                    <h3>Where you want to go?</h3>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="search_wrap">
+                    <form class="search_form" action="#">
+                        <div class="input_field">
+                            <input type="text" placeholder="Where to go?">
+                        </div>
+                        <div class="input_field">
+                            <input id="datepicker" placeholder="Date">
+                        </div>
+                        <div class="input_field">
+                            <select>
+                                <option data-display="Travel type">Travel type</option>
+                                <option value="1">Some option</option>
+                                <option value="2">Another option</option>
+                            </select>
+                        </div>
+                        <div class="search_btn">
+                            <button class="boxed-btn4 " type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popular_places_area" id="explore">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb_70">
+                    <h3>Our Packages</h3>
+                    <p>Explore the elegance of the go’s own country - Kerala and unlock the best ever offers for you.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for package in packages %}
+            <div class="col-lg-4 col-md-6">
+                <div class="single_place">
+                    <div class="thumb">
+                        <a href="{% url 'web:destination' package.slug %}">
+                        <img src="{{package.image.crop.350x197}}" alt=""><noscript><img
+                                src="{% static 'img/place/x1.png.pagespeed.ic._C7q_9jAJk.jpg' %}" alt=""></noscript></a>
+                                {% if package.price  %}
+                                <a href="#" class="prise">₹{{package.price}}</a>
+                                {% endif %}
+                    </div>
+                    <div class="place_info">
+                        <a href="{% url 'web:destination' package.slug  %}">
+                            <h3>{{package.place}}</h3>
+                        </a>
+                        <p>{{package.district}},{{package.state}}</p>
+                        <div class="rating_days d-flex justify-content-between">
+                            <span class="d-flex justify-content-center align-items-center">
+                                <!-- <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> -->
+                            </span>
+                            <div class="days">
+                                <i class="fa fa-clock-o"></i>
+                                <a href="#">{{package.days}} days</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="col-lg-4 col-md-6">
+                <div class="single_place">
+                    <div class="thumb">
+                        <img src="{% static 'img/place/2.png' %}" alt=""><noscript><img
+                                src="{% static 'img/place/x2.png.pagespeed.ic.khTpNP4t31.jpg' %}" alt=""></noscript>
+                        <a href="#" class="prise">₹500</a>
+                    </div>
+                    <div class="place_info">
+                        <a href="destination_details.html">
+                            <h3>Wayanad</h3>
+                        </a>
+                        <p>Wayanad,kerala</p>
+                        <div class="rating_days d-flex justify-content-between">
+                            <span class="d-flex justify-content-center align-items-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <a href="#">(20 Review)</a>
+                            </span>
+                            <div class="days">
+                                <i class="fa fa-clock-o"></i>
+                                <a href="#">5 Days</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single_place">
+                    <div class="thumb">
+                        <img src="{% static 'img/place/5.png' %}" alt=""><noscript><img
+                                src="{% static 'img/place/x3.png.pagespeed.ic.fbiqkH0MMY.jpg' %}" alt=""></noscript>
+                        <a href="#" class="prise">₹500</a>
+                    </div>
+                    <div class="place_info">
+                        <a href="destination_details.html">
+                            <h3>Fort Kochi </h3>
+                        </a>
+                        <p>Kochi,Kerala</p>
+                        <div class="rating_days d-flex justify-content-between">
+                            <span class="d-flex justify-content-center align-items-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <a href="#">(20 Review)</a>
+                            </span>
+                            <div class="days">
+                                <i class="fa fa-clock-o"></i>
+                                <a href="#">5 Days</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single_place">
+                    <div class="thumb">
+                        <img src="{% static 'img/place/6.png' %}" alt=""><noscript><img
+                                src="{% static 'img/place/x4.png.pagespeed.ic.pt7Ftg7YsW.jpg' %}" alt=""></noscript>
+                        <a href="#" class="prise">₹500</a>
+                    </div>
+                    <div class="place_info">
+                        <a href="destination_details.html">
+                            <h3>Thekkady</h3>
+                        </a>
+                        <p>Idukki ,Kerala</p>
+                        <div class="rating_days d-flex justify-content-between">
+                            <span class="d-flex justify-content-center align-items-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <a href="#">(20 Review)</a>
+                            </span>
+                            <div class="days">
+                                <i class="fa fa-clock-o"></i>
+                                <a href="#">5 Days</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single_place">
+                    <div class="thumb">
+                        <img src="{% static 'img/place/7.png' %}" alt=""><noscript><img
+                                src="{% static 'img/place/x5.png.pagespeed.ic.6L3jWhpG-C.jpg' %}" alt=""></noscript>
+                        <a href="#" class="prise">₹500</a>
+                    </div>
+                    <div class="place_info">
+                        <a href="destination_details.html">
+                            <h3>Allappy House Boat</h3>
+                        </a>
+                        <p>Allappalli ,Kerala</p>
+                        <div class="rating_days d-flex justify-content-between">
+                            <span class="d-flex justify-content-center align-items-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <a href="#">(20 Review)</a>
+                            </span>
+                            <div class="days">
+                                <i class="fa fa-clock-o"></i>
+                                <a href="#">5 Days</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="more_place_btn text-center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-    <link rel="stylesheet"
-        href="css/bootstrap.min.css%2bowl.carousel.min.css%2bmagnific-popup.css%2bfont-awesome.min.css%2bthemify-icons.css%2bnice-select.css%2bflaticon.css%2bgijgo.css%2banimate.css%2bslick.css" />
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/style.css">
+<div class="newletter_area overlay">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-10">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="newsletter_text">
+                            <h4>Subscribe Our Newsletter</h4>
+                            <p>Subscribe newsletter to get offers and about
+                                new places to discover.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="mail_form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-9 col-md-8">
+                                    <div class="newsletter_field">
+                                        <input type="email" placeholder="Your mail">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="newsletter_btn">
+                                        <button class="boxed-btn4 " type="submit">Subscribe</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="popular_destination_area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb_70">
+                    <h3>Our Fleets</h3>
+                    <p>The most comfortable and well-maintained vehicles to make your journey more pleasing and enjoyable.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for fleet in fleets %}
+            <div class="col-lg-4 col-md-6">
+                <div class="single_destination">
+                    <div class="thumb">
+                        <img src="{{fleet.image.crop.350x260}}" alt=""><noscript><img
+                                src="{% static 'img/destination/x1.png.pagespeed.ic.U45P3KOe98.png' %}" alt=""></noscript>
+                    </div>
+                    <div class="content">
+                        <p class="d-flex align-items-center">Air Buses <a href="travel_destination.html"> </a> </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+           
+        </div>
+    </div>
+</div>
 
-    <script>(function (w, d) {
-            !function (e, t, r, a, s) {
-                e[r] = e[r] || {}, e[r].executed = [], e.zaraz = { deferred: [] }; var n = t.getElementsByTagName("title")[0]; e[r].c = t.cookie, n && (e[r].t = t.getElementsByTagName("title")[0].text), e[r].w = e.screen.width, e[r].h = e.screen.height, e[r].j = e.innerHeight, e[r].e = e.innerWidth, e[r].l = e.location.href, e[r].r = t.referrer, e[r].k = e.screen.colorDepth, e[r].n = t.characterSet, e[r].o = (new Date).getTimezoneOffset(),//
-                    e[s] = e[s] || [], e.zaraz._preTrack = [], e.zaraz.track = (t, r) => e.zaraz._preTrack.push([t, r]), e[s].push({ "zaraz.start": (new Date).getTime() }); var i = t.getElementsByTagName(a)[0], o = t.createElement(a); o.defer = !0, o.src = "../../cdn-cgi/zaraz/sd41d.js?" + new URLSearchParams(e[r]).toString(), i.parentNode.insertBefore(o, i)
-            }(w, d, "zarazData", "script", "dataLayer");
-        })(window, document);</script>
-</head>
+<div class="video_area video_bg overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="video_wrap text-center">
+                    <h3>Enjoy Video</h3>
+                    <div class="video_icon">
+                        <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=S13yRn66p-c">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="travel_variation_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="single_travel text-center">
+                    <div class="icon">
+                        <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
+                    </div>
+                    <h3>Comfortable Journey</h3>
+                    <p>Perfect Vehicles to comfort your journey.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single_travel text-center">
+                    <div class="icon">
+                        <img src="{% static 'img/svg_icon/2.svg' %}" alt="">
+                    </div>
+                    <h3>Incredible Packages</h3>
+                    <p>Delivering a visual feast to the travellers.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single_travel text-center">
+                    <div class="icon">
+                        <img src="{% static 'img/svg_icon/3.svg' %}" alt="">
+                    </div>
+                    <h3>Surprising Offers</h3>
+                    <p>The best ever offers for your packages.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-    <header>
-        <div class="header-area ">
-            <div id="sticky-header" class="main-header-area">
-                <div class="container-fluid">
-                    <div class="header_bottom_border">
-                        <div class="row align-items-center">
-                            <div class="col-xl-2 col-lg-2">
-                                <div class="logo">
-                                    <a href="index.html">
-                                        <script type="text/javascript" style="display:none">
-                                            //<![CDATA[
-                                            window.__mirage2 = { petok: "12a653701fed9ff1ca0023bcb71b6f0a78850455-1641445539-1800" };
-//]]>
-                                        </script>
-                                        <script type="text/javascript"
-                                            src="../../../ajax.cloudflare.com/cdn-cgi/scripts/04b3eb47/cloudflare-static/mirage2.min.js"></script>
-                                        <img src="img/logo.svg" alt="" class="sree"><noscript><img src=""
+<div class="testimonial_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="testmonial_active owl-carousel">
+                    <div class="single_carousel">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="single_testmonial text-center">
+                                    <div class="author_thumb">
+                                        <img src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                                            alt=""><noscript><img
+                                                src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
                                                 alt=""></noscript>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6">
-                                <div class="main-menu  d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a class="active" href="index.html">home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a class="" href="travel_destination.html">Destination</a></l /li>
-                                            
-                                            <li><a class=""  href="blog.html">blog</a></l /li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 d-none d-lg-block">
-                                <div class="social_wrap d-flex align-items-center justify-content-end">
-                                    <div class="number">
-                                        <p> <i class="fa fa-phone"></i>+91 9995565129</p>
                                     </div>
-                                    <div class="social_links d-none d-xl-block">
-                                        <ul>
-                                            <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
-                                        </ul>
+                                    <p>"There are lots of admirable packages. Perfect place to book your travel.</p>
+                                    <div class="testmonial_author">
+                                        {% comment %} <h3>- Micky Mouse</h3> {% endcomment %}
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Kerala</h3>
-                                <p>God's own country</p>
-                                <a href="#" class="boxed-btn3 explore">Explore Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Kerala</h3>
-                                <p>God's own country</p>
-                                <a href="#" class="boxed-btn3 explore">Explore Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_3 overlay">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Kerala</h3>
-                                <p>God's own country</p>
-                                <a href="#" class="boxed-btn3 explore">Explore Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="where_togo_area">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <div class="form_area">
-                        <h3>Where you want to go?</h3>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="search_wrap">
-                        <form class="search_form" action="#">
-                            <div class="input_field">
-                                <input type="text" placeholder="Where to go?">
-                            </div>
-                            <div class="input_field">
-                                <input id="datepicker" placeholder="Date">
-                            </div>
-                            <div class="input_field">
-                                <select>
-                                    <option data-display="Travel type">Travel type</option>
-                                    <option value="1">Some option</option>
-                                    <option value="2">Another option</option>
-                                </select>
-                            </div>
-                            <div class="search_btn">
-                                <button class="boxed-btn4 " type="submit">Search</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="popular_places_area" id="explore">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>Our Packages</h3>
-                        <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit
-                            hella wolf moon beard words.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/place/1.png" alt=""><noscript><img
-                                    src="img/place/x1.png.pagespeed.ic._C7q_9jAJk.jpg" alt=""></noscript>
-                            <a href="#" class="prise">₹500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="destination_details.html">
-                                <h3>Munnar</h3>
-                            </a>
-                            <p>Idukki,Kerala</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/place/2.png" alt=""><noscript><img
-                                    src="img/place/x2.png.pagespeed.ic.khTpNP4t31.jpg" alt=""></noscript>
-                            <a href="#" class="prise">₹500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="destination_details.html">
-                                <h3>Wayanad</h3>
-                            </a>
-                            <p>Wayanad,kerala</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/place/5.png" alt=""><noscript><img
-                                    src="img/place/x3.png.pagespeed.ic.fbiqkH0MMY.jpg" alt=""></noscript>
-                            <a href="#" class="prise">₹500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="destination_details.html">
-                                <h3>Fort Kochi </h3>
-                            </a>
-                            <p>Kochi,Kerala</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/place/6.png" alt=""><noscript><img
-                                    src="img/place/x4.png.pagespeed.ic.pt7Ftg7YsW.jpg" alt=""></noscript>
-                            <a href="#" class="prise">₹500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="destination_details.html">
-                                <h3>Thekkady</h3>
-                            </a>
-                            <p>Idukki ,Kerala</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/place/7.png" alt=""><noscript><img
-                                    src="img/place/x5.png.pagespeed.ic.6L3jWhpG-C.jpg" alt=""></noscript>
-                            <a href="#" class="prise">₹500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="destination_details.html">
-                                <h3>Allappy House Boat</h3>
-                            </a>
-                            <p>Allappalli ,Kerala</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="more_place_btn text-center">
-                        <a class="boxed-btn4" href="#">More Places</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="newletter_area overlay">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-10">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="newsletter_text">
-                                <h4>Subscribe Our Newsletter</h4>
-                                <p>Subscribe newsletter to get offers and about
-                                    new places to discover.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="mail_form">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-9 col-md-8">
-                                        <div class="newsletter_field">
-                                            <input type="email" placeholder="Your mail">
-                                        </div>
+                    <div class="single_carousel">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="single_testmonial text-center">
+                                    <div class="author_thumb">
+                                        <img src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                                            alt=""><noscript><img
+                                                src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                                                alt=""></noscript>
                                     </div>
-                                    <div class="col-lg-3 col-md-4">
-                                        <div class="newsletter_btn">
-                                            <button class="boxed-btn4 " type="submit">Subscribe</button>
-                                        </div>
+                                    <p>"Sreeholiday gifted us the most beautiful and memorable days of our life.</p>
+                                    <div class="testmonial_author">
+                                        {% comment %} <h3>- Tom Mouse</h3> {% endcomment %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single_carousel">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="single_testmonial text-center">
+                                    <div class="author_thumb">
+                                        <img src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                                            alt=""><noscript><img
+                                                src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                                                alt=""></noscript>
+                                    </div>
+                                    <p>"They have the best transportation system and stunning travel plans</p>
+                                    <div class="testmonial_author">
+                                        {% comment %} <h3>- Jerry Mouse</h3> {% endcomment %}
                                     </div>
                                 </div>
                             </div>
@@ -374,468 +405,78 @@
             </div>
         </div>
     </div>
+</div>
 
-    <div class="popular_destination_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>Our Fleets</h3>
-                        <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit
-                            hella wolf moon beard words.</p>
-                    </div>
+<div class="recent_trip_area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb_70">
+                    <h3>Recent Trips</h3>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/destination/3.png" alt=""><noscript><img
-                                    src="img/destination/x1.png.pagespeed.ic.U45P3KOe98.png" alt=""></noscript>
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">Air Buses <a href="travel_destination.html"> </a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/destination/2.png" alt=""><noscript><img
-                                    src="img/destination/x2.png.pagespeed.ic.8sdFlO1TPt.png" alt=""></noscript>
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">Travellors <a href="travel_destination.html"></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/destination/1.png" alt=""><noscript><img
-                                    src="img/destination/x3.png.pagespeed.ic.jwNAyltY22.png" alt=""></noscript>
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">Cabs<a href="travel_destination.html"></a> </p>
-                        </div>
-                    </div>
-                </div>
-               
             </div>
         </div>
+        <div class="row">
+            {% for blog in blogs %}
+            <div class="col-lg-4 col-md-6">
+                <div class="single_trip">
+                    <div class="thumb">
+                        <img src="{{blog.image.crop.350x241}}" alt=""><noscript><img
+                                src="{% static 'img/trip/x1.png.pagespeed.ic.8QbVwnQzjI.jpg' %}" alt=""></noscript>
+                    </div>
+                    <div class="info">
+                        <div class="date">
+                            <span>{{blog.day}}, {{blog.month}}</span>
+                        </div>
+                        <a href="#">
+                            <h3>{{blog.bloghead}}</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% comment %} <div class="col-lg-4 col-md-6">
+                <div class="single_trip">
+                    <div class="thumb">
+                        <img src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}" alt=""><noscript><img
+                                src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}" alt=""></noscript>
+                    </div>
+                    <div class="info">
+                        <div class="date">
+                            <span>Oct 12, 2019</span>
+                        </div>
+                        <a href="#">
+                            <h3>Journeys Are Best Measured In
+                                New Friends</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single_trip">
+                    <div class="thumb">
+                        <img src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}" alt=""><noscript><img
+                                src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}" alt=""></noscript>
+                    </div>
+                    <div class="info">
+                        <div class="date">
+                            <span>Oct 12, 2019</span>
+                        </div>
+                        <a href="#">
+                            <h3>Journeys Are Best Measured In
+                                New Friends</h3>
+                        </a>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+        </div>
     </div>
+</div>
+
+
+
+
     
-    <div class="video_area video_bg overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="video_wrap text-center">
-                        <h3>Enjoy Video</h3>
-                        <div class="video_icon">
-                            <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=S13yRn66p-c">
-                                <i class="fa fa-play"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="travel_variation_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_travel text-center">
-                        <div class="icon">
-                            <img src="img/svg_icon/1.svg" alt="">
-                        </div>
-                        <h3>Comfortable Journey</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_travel text-center">
-                        <div class="icon">
-                            <img src="img/svg_icon/2.svg" alt="">
-                        </div>
-                        <h3>Luxuries Hotel</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_travel text-center">
-                        <div class="icon">
-                            <img src="img/svg_icon/3.svg" alt="">
-                        </div>
-                        <h3>Travel Guide</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="testimonial_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="testmonial_active owl-carousel">
-                        <div class="single_carousel">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="single_testmonial text-center">
-                                        <div class="author_thumb">
-                                            <img src="img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png"
-                                                alt=""><noscript><img
-                                                    src="img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png"
-                                                    alt=""></noscript>
-                                        </div>
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
-                                            programmes to help alleviate human suffering.</p>
-                                        <div class="testmonial_author">
-                                            <h3>- Micky Mouse</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_carousel">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="single_testmonial text-center">
-                                        <div class="author_thumb">
-                                            <img src="img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png"
-                                                alt=""><noscript><img
-                                                    src="img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png"
-                                                    alt=""></noscript>
-                                        </div>
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
-                                            programmes to help alleviate human suffering.</p>
-                                        <div class="testmonial_author">
-                                            <h3>- Tom Mouse</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_carousel">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="single_testmonial text-center">
-                                        <div class="author_thumb">
-                                            <img src="img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png"
-                                                alt=""><noscript><img
-                                                    src="img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png"
-                                                    alt=""></noscript>
-                                        </div>
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
-                                            programmes to help alleviate human suffering.</p>
-                                        <div class="testmonial_author">
-                                            <h3>- Jerry Mouse</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="recent_trip_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>Recent Trips</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="img/trip/x1.png.pagespeed.ic.8QbVwnQzjI.jpg" alt=""><noscript><img
-                                    src="img/trip/x1.png.pagespeed.ic.8QbVwnQzjI.jpg" alt=""></noscript>
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg" alt=""><noscript><img
-                                    src="img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg" alt=""></noscript>
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg" alt=""><noscript><img
-                                    src="img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg" alt=""></noscript>
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="footer_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-md-6 col-lg-4 ">
-                        <div class="footer_widget">
-                            <div class="footer_logo">
-                                <a href="#">
-                                    <img src="img/logofooter.svg" alt=""><noscript><img src="img/logofooter.svg"
-                                            alt=""></noscript>
-                                </a>
-                            </div>
-                            <p>Kerala, India <br> Street address <br>
-                                <a href="#">+91 9995565129</a> <br>
-                                <a href="#"><span class="__cf_email__"
-                                        data-cfemail="83e0ecedf7e2e0f7c3e0e2f1f3e6edf7e6f1ade0ecee">[email&#160;protected]</span></a>
-                            </p>
-                            <div class="socail_links">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-twitter-alt"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-pinterest"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-youtube-play"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-md-6 col-lg-2">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Company
-                            </h3>
-                            <ul class="links">
-                                <li><a href="#">Pricing</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#"> Gallery</a></li>
-                                <li><a href="#"> Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Popular destination
-                            </h3>
-                            <ul class="links double_links">
-                                <li><a href="#">Kovalam</a></li>
-                                <li><a href="#">Wayanad</a></li>
-                                <li><a href="#">Idukki</a></li>
-                                <li><a href="#">Munnar</a></li>
-                                <li><a href="#">Allappally</a></li>
-                                <li><a href="#">Fort Kochin</a></li>
-                                <li><a href="#">Thekkady</a></li>
-                                <li><a href="#">Athirapally</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Instagram
-                            </h3>
-                            <div class="instagram_feed">
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="img/instagram/x1.png.pagespeed.ic.H_782inER2.jpg"
-                                            alt=""><noscript><img src="img/instagram/x1.png.pagespeed.ic.H_782inER2.jpg"
-                                                alt=""></noscript>
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="img/instagram/x2.png.pagespeed.ic.FZIGSP-8us.jpg"
-                                            alt=""><noscript><img src="img/instagram/x2.png.pagespeed.ic.FZIGSP-8us.jpg"
-                                                alt=""></noscript>
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="img/instagram/x3.png.pagespeed.ic.Mqp8pIdUQB.jpg"
-                                            alt=""><noscript><img src="img/instagram/x3.png.pagespeed.ic.Mqp8pIdUQB.jpg"
-                                                alt=""></noscript>
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="img/instagram/x4.png.pagespeed.ic.prZeCOucr1.jpg"
-                                            alt=""><noscript><img src="img/instagram/x4.png.pagespeed.ic.prZeCOucr1.jpg"
-                                                alt=""></noscript>
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="img/instagram/x5.png.pagespeed.ic.HcyKLvyhCN.jpg"
-                                            alt=""><noscript><img src="img/instagram/x5.png.pagespeed.ic.HcyKLvyhCN.jpg"
-                                                alt=""></noscript>
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="img/instagram/x6.png.pagespeed.ic.NwZJRiYpEY.jpg"
-                                            alt=""><noscript><img src="img/instagram/x6.png.pagespeed.ic.NwZJRiYpEY.jpg"
-                                                alt=""></noscript>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="copy-right_text">
-            <div class="container">
-                <div class="footer_border"></div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <p class="copy_right text-center">
-
-                            Copyright &copy;
-                            <script data-cfasync="false"
-                                src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved | Designed  by <a
-                                href="https://gedexo.com/" target="_blank">Gedexo</a>
-
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="serch_form">
-                    <input type="text" placeholder="Search">
-                    <button type="submit">search</button>
-                </div>
-            </div>
-        </div>
-    </div>
+{% endblock %}
 
 
-
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/popper.min.js%2bbootstrap.min.js.pagespeed.jc.GCZuatfYqV.js"></script>
-    <script>eval(mod_pagespeed_w4HFyaywoQ);</script>
-    <script>eval(mod_pagespeed_doXtdYmDnD);</script>
-    <script
-        src="js/owl.carousel.min.js%2bisotope.pkgd.min.js%2bajax-form.js%2bwaypoints.min.js%2bjquery.counterup.min.js.pagespeed.jc.IRPFBfexB2.js"></script>
-    <script>eval(mod_pagespeed_hL5ixR9dKJ);</script>
-    <script>eval(mod_pagespeed_YdDHANmm4g);</script>
-    <script>eval(mod_pagespeed_oMOLgNGcTB);</script>
-    <script>eval(mod_pagespeed_Br9lu26z_4);</script>
-    <script>eval(mod_pagespeed_s1CprVbd2J);</script>
-    <script
-        src="js/imagesloaded.pkgd.min.js%2bscrollIt.js%2bjquery.scrollUp.min.js%2bwow.min.js%2bnice-select.min.js%2bjquery.slicknav.min.js%2bjquery.magnific-popup.min.js%2bplugins.js.pagespeed.jc.-"></script>
-    <script>eval(mod_pagespeed_zx8$uM17ga);</script>
-    <script>eval(mod_pagespeed_puTnwd$wCZ);</script>
-    <script>eval(mod_pagespeed_WOuaaKbtOa);</script>
-    <script>eval(mod_pagespeed_tvtyDe5QTn);</script>
-    <script>eval(mod_pagespeed_i7ZmER3qNT);</script>
-    <script>eval(mod_pagespeed_TFpBzEOzH9);</script>
-    <script>eval(mod_pagespeed_QCTBE6utOp);</script>
-    <script>eval(mod_pagespeed_PKUnZWJN2U);</script>
-    <script src="js/gijgo.min.js"></script>
-    <script
-        src="js/slick.min.js%2bcontact.js%2bjquery.ajaxchimp.min.js%2bjquery.form.js.pagespeed.jc.M6ABaBjkcf.js"></script>
-    <script>eval(mod_pagespeed_3$eu5KdNcf);</script>
-
-    <script>eval(mod_pagespeed_4Mxr9GN$Lv);</script>
-    <script>eval(mod_pagespeed_sFtOz3ulEx);</script>
-    <script>eval(mod_pagespeed_hCjFUBzXGQ);</script>
-    <script src="js/jquery.validate.min.js%2bmail-script.js%2bmain.js.pagespeed.jc._uAgvy38CL.js"></script>
-    <script>eval(mod_pagespeed_iuZ1YKjKN2);</script>
-    <script>eval(mod_pagespeed_iFleDNZNza);</script>
-    <script>eval(mod_pagespeed_cVk$fvNx6E);</script>
-    <script>
-        $('#datepicker').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-                rightIcon: '<span class="fa fa-caret-down"></span>'
-            }
-        });
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-23581568-13');
-    </script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
-        integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
-        data-cf-beacon='{"rayId":"6c92699e482e4b50","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}'
-        crossorigin="anonymous"></script>
-    <script>
-        $(".explore").click(function() {
-            $('html, body').animate({
-                scrollTop: $("#explore").offset().top
-            }, 2000);
-        });
-    </script>
-</body>
-
-</html>

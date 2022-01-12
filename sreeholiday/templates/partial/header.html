@@ -1,0 +1,62 @@
+{% load static %}
+
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid">
+                <div class="header_bottom_border">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <script type="text/javascript" style="display:none">
+                                        //<![CDATA[
+                                        window.__mirage2 = { petok: "12a653701fed9ff1ca0023bcb71b6f0a78850455-1641445539-1800" };
+//]]>
+                                    </script>
+                                    <script type="text/javascript"
+                                        src="{% static 'js/mirage2.min.js' %}"></script>
+                                    <img src="{% static 'img/logo.svg' %}" alt="" class="sree"><noscript><img src=""
+                                            alt=""></noscript>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a class="active" href="{% url 'web:home' %}">home</a></li>
+                                        <li><a  href="{% url 'web:about' %}">About</a></li>
+                                        <li><a class="" href="{% url 'web:destinations' %}">Destination</a></l /li>
+                                        
+                                        <li><a class=""  href="{% url 'web:blog' %}">blog</a></l /li>
+                                        <li><a  href="{% url 'web:contact' %}">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 d-none d-lg-block">
+                            <div class="social_wrap d-flex align-items-center justify-content-end">
+                                <div class="number">
+                                    <p> <i class="fa fa-phone"></i>+91 9995565129</p>
+                                </div>
+                                <div class="social_links d-none d-xl-block">
+                                    <ul>
+                                        <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
+                                        <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
+                                        <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
+                                        <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

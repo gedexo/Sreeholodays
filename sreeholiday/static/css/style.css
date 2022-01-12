@@ -1439,7 +1439,6 @@ h3 {
   color: #fff;
 }
 .destination_banner_wrap {
-  background-image: url(https://preview.colorlib.com/theme/travelo/img/banner/xdestination.png.pagespeed.ic.e7KG7tE5ox.jpg);
   padding: 340px 0;
   background-size: cover;
   background-position: center center;
@@ -3744,9 +3743,4 @@ h6 {
 }
 .sree {
   width: 40%;
-}
-.destsmallimg{
-  justify-content: center;
-  padding-bottom: 10px;
-
 }

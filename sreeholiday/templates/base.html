@@ -1,0 +1,115 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Sree Holidays</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo.svg' %}">
+
+
+    <link rel="stylesheet"
+        href="{% static 'css/custombootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknasas.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify.css' %}">
+
+
+    <script>(function (w, d) {
+            !function (e, t, r, a, s) {
+                e[r] = e[r] || {}, e[r].executed = [], e.zaraz = { deferred: [] }; var n = t.getElementsByTagName("title")[0]; e[r].c = t.cookie, n && (e[r].t = t.getElementsByTagName("title")[0].text), e[r].w = e.screen.width, e[r].h = e.screen.height, e[r].j = e.innerHeight, e[r].e = e.innerWidth, e[r].l = e.location.href, e[r].r = t.referrer, e[r].k = e.screen.colorDepth, e[r].n = t.characterSet, e[r].o = (new Date).getTimezoneOffset(),//
+                    e[s] = e[s] || [], e.zaraz._preTrack = [], e.zaraz.track = (t, r) => e.zaraz._preTrack.push([t, r]), e[s].push({ "zaraz.start": (new Date).getTime() }); var i = t.getElementsByTagName(a)[0], o = t.createElement(a); o.defer = !0, o.src = "../../cdn-cgi/zaraz/sd41d.js?" + new URLSearchParams(e[r]).toString(), i.parentNode.insertBefore(o, i)
+            }(w, d, "zarazData", "script", "dataLayer");
+        })(window, document);</script>
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+   {% include 'partial/header.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% include 'partial/footer.html' %}
+
+   
+   <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+   <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+   <script src="{% static 'js/popper.min.js' %}"></script>
+   <script>eval(mod_pagespeed_w4HFyaywoQ);</script>
+   <script>eval(mod_pagespeed_doXtdYmDnD);</script>
+   <script
+       src="{% static 'js/owlcarosalcustom.js' %}"></script>
+   <script>eval(mod_pagespeed_hL5ixR9dKJ);</script>
+   <script>eval(mod_pagespeed_YdDHANmm4g);</script>
+   <script>eval(mod_pagespeed_oMOLgNGcTB);</script>
+   <script>eval(mod_pagespeed_Br9lu26z_4);</script>
+   <script>eval(mod_pagespeed_s1CprVbd2J);</script>
+   <script
+       src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+      <script src="{% static 'js/nicenav.js' %}"></script>
+       <script src="{% static 'js/nicenav.js' %}"></script>
+   <script>eval(mod_pagespeed_zx8$uM17ga);</script>
+   <script>eval(mod_pagespeed_puTnwd$wCZ);</script>
+   <script>eval(mod_pagespeed_WOuaaKbtOa);</script>
+   <script>eval(mod_pagespeed_tvtyDe5QTn);</script>
+   <script>eval(mod_pagespeed_i7ZmER3qNT);</script>
+   <script>eval(mod_pagespeed_TFpBzEOzH9);</script>
+   <script>eval(mod_pagespeed_QCTBE6utOp);</script>
+   <script>eval(mod_pagespeed_PKUnZWJN2U);</script>
+   <script src="{% static 'js/gijgo.min.js' %}"></script>
+   <script
+       src="{% static 'js/slick.min.js' %}"></script>
+   <script>eval(mod_pagespeed_3$eu5KdNcf);</script>
+
+   <script>eval(mod_pagespeed_4Mxr9GN$Lv);</script>
+   <script>eval(mod_pagespeed_sFtOz3ulEx);</script>
+   <script>eval(mod_pagespeed_hCjFUBzXGQ);</script>
+   <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+   <script src="{% static 'js/imagesloaded.pkgd.min1.js' %}"></script>
+   <script>eval(mod_pagespeed_iuZ1YKjKN2);</script>
+   <script>eval(mod_pagespeed_iFleDNZNza);</script>
+   <script>eval(mod_pagespeed_cVk$fvNx6E);</script>
+   <script>
+       $('#datepicker').datepicker({
+           iconsLibrary: 'fontawesome',
+           icons: {
+               rightIcon: '<span class="fa fa-caret-down"></span>'
+           }
+       });
+   </script>
+
+   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+   <script>
+       window.dataLayer = window.dataLayer || [];
+       function gtag() { dataLayer.push(arguments); }
+       gtag('js', new Date());
+
+       gtag('config', 'UA-23581568-13');
+   </script>
+   <script defer
+       src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
+       integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
+       data-cf-beacon='{"rayId":"6c92699e482e4b50","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}'
+       crossorigin="anonymous"></script>
+   <script>
+       $(".explore").click(function() {
+           $('html, body').animate({
+               scrollTop: $("#explore").offset().top
+           }, 2000);
+       });
+   </script>
+</body>
+
+</html>
