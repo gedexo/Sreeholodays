@@ -7,8 +7,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Single blog</h3>
-                        <p>Pixel perfect design with awesome contents</p>
+                        <h3>Recent Trip</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +24,8 @@
                             <img class="img-fluid" src="{% static 'img/blog/xsingle_blog_1.png.pagespeed.ic.Fwk-gqJS2v.jpg' %}"
                                 alt=""><noscript><img class="img-fluid"
                                     src="{% static 'img/blog/xsingle_blog_1.png.pagespeed.ic.Fwk-gqJS2v.jpg' %}" alt=""></noscript>
-                        </div>
+                                </div>
+                                <p>{{blog.month}} {{blog.day}}, {%if blog.year %}{{blog.year}}{% endif %}</p>
                         <div class="blog_details">
                             <h2>Second divided from form fish beast made every of seas
                                 all gathered us saying he our
@@ -34,7 +34,7 @@
                               
                             </ul>
                             <p class="excert">
-                               {{blog.description}}
+                               {{blog.description|safe}}
                             </p>
                            
                         </div>
@@ -109,47 +109,20 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Recent Post</h3>
+                            <h3 class="widget_title">Recent Trips</h3>
+                            {% for recentblog in recentblogs %}
                             <div class="media post_item">
+                                <a href="{% url 'web:blogdetails' recentblog.slug %}">
                                 <img src="{% static 'img/post/xpost_1.png.pagespeed.ic.VhSDC65MTC.jpg' %}" alt="post"><noscript><img
-                                        src="{% static 'img/post/xpost_1.png.pagespeed.ic.VhSDC65MTC.jpg' %}" alt="post"></noscript>
+                                        src="{% static 'img/post/xpost_1.png.pagespeed.ic.VhSDC65MTC.jpg' %}" alt="post"></noscript></a>
                                 <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>From life was you fish...</h3>
+                                    <a href="{% url 'web:blogdetails' recentblog.slug %}">
+                                        <h3>{{recentblog.bloghead}}</h3>
                                     </a>
-                                    <p>January 12, 2019</p>
+                                    <p>{{recentblog.month}} {{recentblog.day}}, {{recentblog.year}}</p>
                                 </div>
                             </div>
-                            <div class="media post_item">
-                                <img src="{% static 'img/post/xpost_2.png.pagespeed.ic.5NDzxSnIUw.jpg' %}" alt="post"><noscript><img
-                                        src="{% static 'img/post/xpost_2.png.pagespeed.ic.5NDzxSnIUw.jpg' %}" alt="post"></noscript>
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>The Amazing Hubble</h3>
-                                    </a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="{% static 'img/post/xpost_3.png.pagespeed.ic.epUGhxWTdA.jpg' %}" alt="post"><noscript><img
-                                        src="{% static 'img/post/xpost_3.png.pagespeed.ic.epUGhxWTdA.jpg' %}" alt="post"></noscript>
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Astronomy Or Astrology</h3>
-                                    </a>
-                                    <p>03 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="{% static 'img/post/xpost_4.png.pagespeed.ic.hgkXn01NWF.jpg' %}" alt="post"><noscript><img
-                                        src="{% static 'img/post/xpost_4.png.pagespeed.ic.hgkXn01NWF.jpg' %}" alt="post"></noscript>
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Asteroids telescope</h3>
-                                    </a>
-                                    <p>01 Hours ago</p>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </aside>
                     </div>
                 </div>

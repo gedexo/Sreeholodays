@@ -91,7 +91,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="more_place_btn text-center">
-                                <a class="boxed-btn4" href="#">More Places</a>
                             </div>
                         </div>
                     </div>
@@ -136,66 +135,82 @@
 
     <div class="recent_trip_area">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>Recent Trips</h3>
-                    </div>
-                </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="section_title text-center mb_70">
+                <h3>Recent Trips</h3>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="{% static 'img/trip/x1.png.pagespeed.ic.8QbVwnQzjI.jpg' %}" alt=""><noscript><img
-                                    src="{% static 'img/trip/x1.png.pagespeed.ic.8QbVwnQzjI.jpg' %}" alt=""></noscript>
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
+          </div>
+          <div class="row">
+            {% for blog in blogs %}
+            <div class="col-lg-4 col-md-6">
+              <div class="single_trip">
+                <div class="thumb">
+                  <a href="{% url 'web:blogdetails' blog.slug %}">
+                  <img src="{{blog.image.crop.350x241}}" alt="" /><noscript
+                    ><img
+                      src="{% static 'img/trip/x1.png.pagespeed.ic.8QbVwnQzjI.jpg' %}"
+                      alt=""
+                  /></noscript></a>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}" alt=""><noscript><img
-                                    src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}" alt=""></noscript>
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
+                <div class="info">
+                  <div class="date">
+                    <span>{{blog.month}} {{blog.day}},{{blog.year}}</span>
+                  </div>
+                  <a href="{% url 'web:blogdetails' blog.slug %}">
+                    <h3>{{blog.bloghead}}</h3>
+                  </a>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}" alt=""><noscript><img
-                                    src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}" alt=""></noscript>
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+            {% endfor %} {% comment %}
+            <div class="col-lg-4 col-md-6">
+              <div class="single_trip">
+                <div class="thumb">
+                  <img
+                    src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}"
+                    alt=""
+                  /><noscript
+                    ><img
+                      src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}"
+                      alt=""
+                  /></noscript>
+                </div>
+                <div class="info">
+                  <div class="date">
+                    <span>Oct 12, 2019</span>
+                  </div>
+                  <a href="#">
+                    <h3>Journeys Are Best Measured In New Friends</h3>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single_trip">
+                <div class="thumb">
+                  <img
+                    src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}"
+                    alt=""
+                  /><noscript
+                    ><img
+                      src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}"
+                      alt=""
+                  /></noscript>
+                </div>
+                <div class="info">
+                  <div class="date">
+                    <span>Oct 12, 2019</span>
+                  </div>
+                  <a href="#">
+                    <h3>Journeys Are Best Measured In New Friends</h3>
+                  </a>
+                </div>
+              </div>
+            </div>
+            {% endcomment %}
+          </div>
         </div>
-    </div>
+      </div>
 {% endblock %}

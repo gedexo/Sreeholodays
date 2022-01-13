@@ -67,3 +67,11 @@ class OurFleets(models.Model):
     def __str__(self):
         return str(self.name)
 
+    
+
+class Testimonial(models.Model):
+    image=VersatileImageField(upload_to = 'testimonial',ppoi_field='image_ppoi',null=True,blank=True)
+    image_ppoi = PPOIField()
+    name=models.CharField(max_length=225,blank=True,null=True)
+    message=HTMLField()
+

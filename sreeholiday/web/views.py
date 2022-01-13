@@ -7,22 +7,35 @@ def home(request):
     packages=Packages.objects.all()
     fleets=OurFleets.objects.all()
     blogs=Blog.objects.all()[:3]
+    testimonials=Testimonial.objects.all()
     context={
         "slideImages":slideImages,
         "packages":packages,
         "fleets":fleets,
-        "blogs":blogs
+        "blogs":blogs,
+        "testimonials":testimonials
     }
     return render(request,'index.html',context)
 
 
 
 def about(request):
-    return render(request,'about.html')
+    testimonials=Testimonial.objects.all()
+    blogs=Blog.objects.all()[:3]
+    context={
+        "testimonials":testimonials,
+        "blogs":blogs
+        }
+    return render(request,'about.html',context)
 
 
 def contact(request):
-    return render(request,'contact.html')
+    blogs=Blog.objects.all()[:3]
+    context={
+        "blogs":blogs,
+    }
+
+    return render(request,'contact.html',context)
 
 
 def destinations_details(request,slug):
@@ -61,8 +74,10 @@ def destinations_details(request,slug):
 def travel_destination(request):
 
     packages=Packages.objects.all()
+    blogs=Blog.objects.all()[:3]
     context={
-        "packages":packages
+        "packages":packages,
+        "blogs":blogs
     }
 
 
@@ -79,8 +94,10 @@ def blog(request):
 
 def blogdetails(request,slug):
     blog = get_object_or_404(Blog,slug=slug)
+    recentblogs=Blog.objects.all().exclude(slug=slug)
     context = {
-        "blog" : blog, 
+        "blog" : blog,
+        "recentblogs":recentblogs
     }
     return render(request,'single-blog.html',context)
 

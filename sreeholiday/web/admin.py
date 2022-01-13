@@ -22,5 +22,13 @@ class OurFleetsAdmin(admin.ModelAdmin):
 
 admin.site.register(Packages,PackagesAdmin)
 admin.site.register(Events,EventsAdmin)
-admin.site.register(Blog)
+
+class BlogAdmin(admin.ModelAdmin):
+    prepopulated_fields={'slug':('bloghead',)}
+    list_display = ('bloghead',)
+admin.site.register(Blog,BlogAdmin)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ('name', 'message',)
+admin.site.register(Testimonial,TestimonialAdmin)
+
 admin.site.register(OurFleets,OurFleetsAdmin)

@@ -3466,6 +3466,17 @@ h6 {
   .single-post-area .quotes {
     padding: 25px 25px 25px 30px;
   }
+  .box{
+    background: #fff;
+    border-radius: 40px;
+    display: inline-block;
+    height: 410px;
+    margin: 1rem;
+    position: absolute;
+    width: 90%;
+    top: 707px;
+    left: 33px;
+  }
 }
 .single-post-area .arrow {
   position: absolute;
@@ -3530,6 +3541,17 @@ h6 {
     margin-right: 15px;
     width: 45px;
     height: 45px;
+  }
+  .box{
+    background: #fff;
+    border-radius: 40px;
+    display: inline-block;
+    height: 410px;
+    margin: 1rem;
+    position: absolute;
+    width: 90%;
+    top: 707px;
+    left: 33px;
   }
 }
 .single-post-area .blog-author a {
@@ -3618,6 +3640,17 @@ h6 {
   .comments-area {
     padding: 50px 8px;
   }
+  .box{
+    background: #fff;
+    border-radius: 40px;
+    display: inline-block;
+    height: 410px;
+    margin: 1rem;
+    position: absolute;
+    width: 90%;
+    top: 707px;
+    left: 33px;
+  }
 }
 .comments-area h4 {
   margin-bottom: 35px;
@@ -3642,6 +3675,17 @@ h6 {
   }
   .comments-area .comment-list .single-comment .comment {
     font-size: 10px;
+  }
+  .box{
+    background: #fff;
+    border-radius: 40px;
+    display: inline-block;
+    height: 410px;
+    margin: 1rem;
+    position: absolute;
+    width: 90%;
+    top: 707px;
+    left: 33px;
   }
 }
 .comments-area .thumb {
@@ -3691,6 +3735,17 @@ h6 {
   .comment-form .name {
     padding-right: 0;
     margin-bottom: 1rem;
+  }
+  .box{
+    background: #fff;
+    border-radius: 40px;
+    display: inline-block;
+    height: 410px;
+    margin: 1rem;
+    position: absolute;
+    width: 90%;
+    top: 707px;
+    left: 33px;
   }
 }
 .comment-form .email {
@@ -3742,7 +3797,7 @@ h6 {
   color: #777;
 }
 .sree {
-  width: 40%;
+  width: 45%;
 }
 .box {
   background: #fff;
@@ -3781,3 +3836,35 @@ h6 {
   padding: 10px;
   border-radius: 20px !important;
 }
+
+.br-round{
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .box{
+    background: #fff;
+    border-radius: 40px;
+    display: inline-block;
+    height: 410px;
+    margin: 1rem;
+    position: absolute;
+    width: 90%;
+    top: 707px;
+    left: 33px;
+  }
+  .phonecard{
+    width: 45% !important;
+    
+  }
+  .phonecard h5{
+    font-size: 17px;
+  }
+  .phonecard h4{
+    font-size: 17px;
+  }
+  .phonecardhead{
+    font-size: 20px;
+    padding-top: 10px;
+  }
+ }
