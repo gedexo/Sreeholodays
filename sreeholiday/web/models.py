@@ -9,6 +9,7 @@ class MainBannerImages(models.Model):
     image = VersatileImageField(upload_to = 'bannerimages',ppoi_field='image_ppoi',blank=True)
     image_ppoi = PPOIField()
     
+    
 
 
 
@@ -25,16 +26,22 @@ class Packages(models.Model):
     price =models.IntegerField(null=True,blank=True)
     shortdiscription=models.TextField(blank=True,null=True)
     discription=HTMLField(blank=True,null=True)
+
+    def __str__(self):
+        return str(self.place)
     
 
 
 class Events(models.Model):
     package=models.ForeignKey(Packages,on_delete=models.CASCADE)
     eventHead=models.CharField(max_length=225,null=True,blank=True)
-    name=models.CharField(max_length=225,null=True,blank=True)
     image=VersatileImageField(upload_to = 'events',ppoi_field='image_ppoi',null=True,blank=True)
     image_ppoi = PPOIField()
     shortdiscription=HTMLField(blank=True,null=True)
+
+    def __str__(self):
+        return str(self.package)
+    
 
 
 class Blog(models.Model):
@@ -43,6 +50,7 @@ class Blog(models.Model):
     image_ppoi = PPOIField()
     month=models.CharField(max_length=225,blank=True,null=True)
     day=models.CharField(max_length=225,blank=True,null=True)
+    year=models.CharField(max_length=225,blank=True,null=True)
     description=HTMLField(blank=True,null=True)
     slug = models.SlugField()
 
@@ -55,3 +63,7 @@ class OurFleets(models.Model):
     image=VersatileImageField(upload_to = 'fleets',ppoi_field='image_ppoi',null=True,blank=True)
     image_ppoi = PPOIField()
     seats=models.CharField(max_length=225)
+
+    def __str__(self):
+        return str(self.name)
+

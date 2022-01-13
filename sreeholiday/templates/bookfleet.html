@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if booking %}
+<div class="container fleetbook">
+    <div class="row">
+        <div class="col-lg-12 col-12" style="display: flex;justify-content: center;">
+            <div class="card text-center" style="width: 600px;">
+                <div class="card-head" style="padding: 20px;">
+                    <h5>Confirm Your Ride</h5>
+
+                </div>
+                <img class="card-img-top cardimage" src="{{fleet.image.crop.360x250}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{fleet.name}}</h5>
+                    {% if fleet.discribtion %}
+                    <p class="card-text">{{fleet.discribtion}}</p>
+                        {% endif %}
+
+                    <h6 class="card-title">Seats  :{{fleet.seats}}</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name : {{name}}</li>
+                    <li class="list-group-item">Phone : {{phone}}</li>
+                    <li class="list-group-item">Date : {{date}}</li>
+                    <li class="list-group-item"><a href="{{messageLink}}" target="blank" class="btn whatsapp-btn">Send Booking</a></li>
+                   
+                </ul>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container fleetbook">
+    <div class="row">
+        <div class="col-lg-12 col-12" style="display: flex;justify-content: center;">
+            <div class="card text-center" style="width: 600px;">
+                <div class="card-head" style="padding: 20px;">
+                    <h5>Book Your Ride</h5>
+
+                </div>
+                <img class="card-img-top cardimage" src="{{fleet.image.crop.360x250}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{fleet.name}}</h5>
+                    {% if fleet.discribtion %}
+                    <p class="card-text">{{fleet.discribtion}}</p>
+                        {% endif %}
+
+                    <h6 class="card-title">Seats  :{{fleet.seats}}</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <form method="POST">
+                        {% csrf_token %}
+                    <li class="list-group-item"><input type="text" name="name" required class="form-control" placeholder="Name"></li>
+                    <li class="list-group-item"><input type="text" name="phone" required class="form-control"  placeholder="Phone"></li>
+                    <li class="list-group-item"><input type="date" name="date" required class="form-control"></li>
+                    <li class="list-group-item"><input type="submit" class="btn whatsapp-btn" value="Book"></li>
+                    </form>
+                </ul>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

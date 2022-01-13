@@ -1,107 +1,113 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <div class="slider_area">
-    <div class="slider_active owl-carousel">
-        {% for slideImage in slideImages %}
-        <div class="single_slider  d-flex align-items-center slider_bg_1 overlay" style="background-image: url({{slideImage.image.crop.1870x600}});">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-12 col-md-12">
-                        <div class="slider_text text-center">
-                            <h3>Kerala</h3>
-                            <p>Exploring The Beauty Of God’s Own Country</p>
-                            <a href="#" class="boxed-btn3 explore">Explore Now</a>
-                        </div>
-                    </div>
-                </div>
+  <div class="slider_active owl-carousel">
+    {% for slideImage in slideImages %}
+    <div
+      class="single_slider d-flex align-items-center slider_bg_1 overlay"
+      style="background-image: url({{slideImage.image.crop.1870x600}});"
+    >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-12 col-md-12">
+            <div class="slider_text text-center">
+              <h3>Kerala</h3>
+              <p>Exploring The Beauty Of God’s Own Country</p>
+              <a href="#" class="boxed-btn3 explore">Explore Now</a>
             </div>
+          </div>
         </div>
-        {% endfor %}
+      </div>
     </div>
+    {% endfor %}
+  </div>
 </div>
 
-
 <div class="where_togo_area">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-3">
-                <div class="form_area">
-                    <h3>Where you want to go?</h3>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="search_wrap">
-                    <form class="search_form" action="#">
-                        <div class="input_field">
-                            <input type="text" placeholder="Where to go?">
-                        </div>
-                        <div class="input_field">
-                            <input id="datepicker" placeholder="Date">
-                        </div>
-                        <div class="input_field">
-                            <select>
-                                <option data-display="Travel type">Travel type</option>
-                                <option value="1">Some option</option>
-                                <option value="2">Another option</option>
-                            </select>
-                        </div>
-                        <div class="search_btn">
-                            <button class="boxed-btn4 " type="submit">Search</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-3">
+        <div class="form_area">
+          <h3>Where you want to go?</h3>
         </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="search_wrap">
+          <form class="search_form" action="#">
+            <div class="input_field">
+              <input type="text" placeholder="Where to go?" />
+            </div>
+            <div class="input_field">
+              <input id="datepicker" placeholder="Date" />
+            </div>
+            <div class="input_field">
+              <select>
+                <option data-display="Travel type">Travel type</option>
+                <option value="1">Some option</option>
+                <option value="2">Another option</option>
+              </select>
+            </div>
+            <div class="search_btn">
+              <button class="boxed-btn4" type="submit">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="popular_places_area" id="explore">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section_title text-center mb_70">
-                    <h3>Our Packages</h3>
-                    <p>Explore the elegance of the go’s own country - Kerala and unlock the best ever offers for you.</p>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="section_title text-center mb_70">
+          <h3>Our Packages</h3>
+          <p>
+            Explore the elegance of the go’s own country - Kerala and unlock the
+            best ever offers for you.
+          </p>
         </div>
-        <div class="row">
-            {% for package in packages %}
-            <div class="col-lg-4 col-md-6">
-                <div class="single_place">
-                    <div class="thumb">
-                        <a href="{% url 'web:destination' package.slug %}">
-                        <img src="{{package.image.crop.350x197}}" alt=""><noscript><img
-                                src="{% static 'img/place/x1.png.pagespeed.ic._C7q_9jAJk.jpg' %}" alt=""></noscript></a>
-                                {% if package.price  %}
-                                <a href="#" class="prise">₹{{package.price}}</a>
-                                {% endif %}
-                    </div>
-                    <div class="place_info">
-                        <a href="{% url 'web:destination' package.slug  %}">
-                            <h3>{{package.place}}</h3>
-                        </a>
-                        <p>{{package.district}},{{package.state}}</p>
-                        <div class="rating_days d-flex justify-content-between">
-                            <span class="d-flex justify-content-center align-items-center">
-                                <!-- <i class="fa fa-star"></i>
+      </div>
+    </div>
+    <div class="row">
+      {% for package in packages %}
+      <div class="col-lg-4 col-md-6">
+        <div class="single_place">
+          <div class="thumb">
+            <a href="{% url 'web:destination' package.slug %}">
+              <img src="{{package.image.crop.350x197}}" alt="" /><noscript
+                ><img
+                  src="{% static 'img/place/x1.png.pagespeed.ic._C7q_9jAJk.jpg' %}"
+                  alt="" /></noscript
+            ></a>
+            {% if package.price %}
+            <a href="#" class="prise">₹{{package.price}}</a>
+            {% endif %}
+          </div>
+          <div class="place_info">
+            <a href="{% url 'web:destination' package.slug  %}">
+              <h3>{{package.place}}</h3>
+            </a>
+            <p>{{package.district}},{{package.state}}</p>
+            <div class="rating_days d-flex justify-content-between">
+              <span class="d-flex justify-content-center align-items-center">
+                <!-- <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i> -->
-                            </span>
-                            <div class="days">
-                                <i class="fa fa-clock-o"></i>
-                                <a href="#">{{package.days}} days</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </span>
+              <div class="days">
+                <i class="fa fa-clock-o"></i>
+                <a href="#">{{package.days}} days</a>
+              </div>
             </div>
-            {% endfor %}
-            <!-- <div class="col-lg-4 col-md-6">
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- <div class="col-lg-4 col-md-6">
                 <div class="single_place">
                     <div class="thumb">
                         <img src="{% static 'img/place/2.png' %}" alt=""><noscript><img
@@ -217,266 +223,310 @@
                     </div>
                 </div>
             </div> -->
-            
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="more_place_btn text-center">
-                </div>
-            </div>
-        </div>
     </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="more_place_btn text-center"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-
 <div class="newletter_area overlay">
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-lg-10">
-                <div class="row align-items-center">
-                    <div class="col-lg-5">
-                        <div class="newsletter_text">
-                            <h4>Subscribe Our Newsletter</h4>
-                            <p>Subscribe newsletter to get offers and about
-                                new places to discover.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="mail_form">
-                            <div class="row no-gutters">
-                                <div class="col-lg-9 col-md-8">
-                                    <div class="newsletter_field">
-                                        <input type="email" placeholder="Your mail">
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4">
-                                    <div class="newsletter_btn">
-                                        <button class="boxed-btn4 " type="submit">Subscribe</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-10">
+        <div class="row align-items-center">
+          <div class="col-lg-5">
+            <div class="newsletter_text">
+              <h4>Subscribe Our Newsletter</h4>
+              <p>
+                Subscribe newsletter to get offers and about new places to
+                discover.
+              </p>
             </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="mail_form">
+              <div class="row no-gutters">
+                <div class="col-lg-9 col-md-8">
+                  <div class="newsletter_field">
+                    <input type="email" placeholder="Your mail" />
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                  <div class="newsletter_btn">
+                    <button class="boxed-btn4" type="submit">Subscribe</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="popular_destination_area">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section_title text-center mb_70">
-                    <h3>Our Fleets</h3>
-                    <p>The most comfortable and well-maintained vehicles to make your journey more pleasing and enjoyable.</p>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="section_title text-center mb_70">
+          <h3>Our Fleets</h3>
+          <p>
+            The most comfortable and well-maintained vehicles to make your
+            journey more pleasing and enjoyable.
+          </p>
         </div>
-        <div class="row">
-            {% for fleet in fleets %}
-            <div class="col-lg-4 col-md-6">
-                <div class="single_destination">
-                    <div class="thumb">
-                        <img src="{{fleet.image.crop.350x260}}" alt=""><noscript><img
-                                src="{% static 'img/destination/x1.png.pagespeed.ic.U45P3KOe98.png' %}" alt=""></noscript>
-                    </div>
-                    <div class="content">
-                        <p class="d-flex align-items-center">Air Buses <a href="travel_destination.html"> </a> </p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-           
-        </div>
+      </div>
     </div>
+    <div class="row">
+      {% for fleet in fleets %}
+      <div class="col-lg-4 col-md-6">
+        <div class="single_destination">
+          <div class="thumb">
+            <a href="{%url 'web:bookfleet' fleet.id %}">
+              <img src="{{fleet.image.crop.350x260}}" alt="" />
+            </a>
+          </div>
+          <div class="content">
+            <a href="{%url 'web:bookfleet' fleet.id %}">
+              <p class="d-flex align-items-center">
+                {{fleet.name}} 
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
 
 <div class="video_area video_bg overlay">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="video_wrap text-center">
-                    <h3>Enjoy Video</h3>
-                    <div class="video_icon">
-                        <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=S13yRn66p-c">
-                            <i class="fa fa-play"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="video_wrap text-center">
+          <h3>Enjoy Video</h3>
+          <div class="video_icon">
+            <a
+              class="popup-video video_play_button"
+              href="https://www.youtube.com/watch?v=S13yRn66p-c"
+            >
+              <i class="fa fa-play"></i>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="travel_variation_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="single_travel text-center">
-                    <div class="icon">
-                        <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
-                    </div>
-                    <h3>Comfortable Journey</h3>
-                    <p>Perfect Vehicles to comfort your journey.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single_travel text-center">
-                    <div class="icon">
-                        <img src="{% static 'img/svg_icon/2.svg' %}" alt="">
-                    </div>
-                    <h3>Incredible Packages</h3>
-                    <p>Delivering a visual feast to the travellers.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single_travel text-center">
-                    <div class="icon">
-                        <img src="{% static 'img/svg_icon/3.svg' %}" alt="">
-                    </div>
-                    <h3>Surprising Offers</h3>
-                    <p>The best ever offers for your packages.</p>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="single_travel text-center">
+          <div class="icon">
+            <img src="{% static 'img/svg_icon/1.svg' %}" alt="" />
+          </div>
+          <h3>Comfortable Journey</h3>
+          <p>Perfect Vehicles to comfort your journey.</p>
         </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="single_travel text-center">
+          <div class="icon">
+            <img src="{% static 'img/svg_icon/2.svg' %}" alt="" />
+          </div>
+          <h3>Incredible Packages</h3>
+          <p>Delivering a visual feast to the travellers.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="single_travel text-center">
+          <div class="icon">
+            <img src="{% static 'img/svg_icon/3.svg' %}" alt="" />
+          </div>
+          <h3>Surprising Offers</h3>
+          <p>The best ever offers for your packages.</p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="testimonial_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="testmonial_active owl-carousel">
-                    <div class="single_carousel">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="single_testmonial text-center">
-                                    <div class="author_thumb">
-                                        <img src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
-                                            alt=""><noscript><img
-                                                src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
-                                                alt=""></noscript>
-                                    </div>
-                                    <p>"There are lots of admirable packages. Perfect place to book your travel.</p>
-                                    <div class="testmonial_author">
-                                        {% comment %} <h3>- Micky Mouse</h3> {% endcomment %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_carousel">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="single_testmonial text-center">
-                                    <div class="author_thumb">
-                                        <img src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
-                                            alt=""><noscript><img
-                                                src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
-                                                alt=""></noscript>
-                                    </div>
-                                    <p>"Sreeholiday gifted us the most beautiful and memorable days of our life.</p>
-                                    <div class="testmonial_author">
-                                        {% comment %} <h3>- Tom Mouse</h3> {% endcomment %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_carousel">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="single_testmonial text-center">
-                                    <div class="author_thumb">
-                                        <img src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
-                                            alt=""><noscript><img
-                                                src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
-                                                alt=""></noscript>
-                                    </div>
-                                    <p>"They have the best transportation system and stunning travel plans</p>
-                                    <div class="testmonial_author">
-                                        {% comment %} <h3>- Jerry Mouse</h3> {% endcomment %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="testmonial_active owl-carousel">
+          <div class="single_carousel">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="single_testmonial text-center">
+                  <div class="author_thumb">
+                    <img
+                      src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                      alt=""
+                    /><noscript
+                      ><img
+                        src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                        alt=""
+                    /></noscript>
+                  </div>
+                  <p>
+                    "There are lots of admirable packages. Perfect place to book
+                    your travel.
+                  </p>
+                  <div class="testmonial_author">
+                    {% comment %}
+                    <h3>- Micky Mouse</h3>
+                    {% endcomment %}
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+          <div class="single_carousel">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="single_testmonial text-center">
+                  <div class="author_thumb">
+                    <img
+                      src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                      alt=""
+                    /><noscript
+                      ><img
+                        src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                        alt=""
+                    /></noscript>
+                  </div>
+                  <p>
+                    "Sreeholiday gifted us the most beautiful and memorable days
+                    of our life.
+                  </p>
+                  <div class="testmonial_author">
+                    {% comment %}
+                    <h3>- Tom Mouse</h3>
+                    {% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="single_carousel">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="single_testmonial text-center">
+                  <div class="author_thumb">
+                    <img
+                      src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                      alt=""
+                    /><noscript
+                      ><img
+                        src="{% static 'img/testmonial/xauthor.png.pagespeed.ic.f7Oj4pl0zy.png' %}"
+                        alt=""
+                    /></noscript>
+                  </div>
+                  <p>
+                    "They have the best transportation system and stunning
+                    travel plans
+                  </p>
+                  <div class="testmonial_author">
+                    {% comment %}
+                    <h3>- Jerry Mouse</h3>
+                    {% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="recent_trip_area">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section_title text-center mb_70">
-                    <h3>Recent Trips</h3>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="section_title text-center mb_70">
+          <h3>Recent Trips</h3>
         </div>
-        <div class="row">
-            {% for blog in blogs %}
-            <div class="col-lg-4 col-md-6">
-                <div class="single_trip">
-                    <div class="thumb">
-                        <img src="{{blog.image.crop.350x241}}" alt=""><noscript><img
-                                src="{% static 'img/trip/x1.png.pagespeed.ic.8QbVwnQzjI.jpg' %}" alt=""></noscript>
-                    </div>
-                    <div class="info">
-                        <div class="date">
-                            <span>{{blog.day}}, {{blog.month}}</span>
-                        </div>
-                        <a href="#">
-                            <h3>{{blog.bloghead}}</h3>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            {% comment %} <div class="col-lg-4 col-md-6">
-                <div class="single_trip">
-                    <div class="thumb">
-                        <img src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}" alt=""><noscript><img
-                                src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}" alt=""></noscript>
-                    </div>
-                    <div class="info">
-                        <div class="date">
-                            <span>Oct 12, 2019</span>
-                        </div>
-                        <a href="#">
-                            <h3>Journeys Are Best Measured In
-                                New Friends</h3>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single_trip">
-                    <div class="thumb">
-                        <img src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}" alt=""><noscript><img
-                                src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}" alt=""></noscript>
-                    </div>
-                    <div class="info">
-                        <div class="date">
-                            <span>Oct 12, 2019</span>
-                        </div>
-                        <a href="#">
-                            <h3>Journeys Are Best Measured In
-                                New Friends</h3>
-                        </a>
-                    </div>
-                </div>
-            </div> {% endcomment %}
-        </div>
+      </div>
     </div>
+    <div class="row">
+      {% for blog in blogs %}
+      <div class="col-lg-4 col-md-6">
+        <div class="single_trip">
+          <div class="thumb">
+            <img src="{{blog.image.crop.350x241}}" alt="" /><noscript
+              ><img
+                src="{% static 'img/trip/x1.png.pagespeed.ic.8QbVwnQzjI.jpg' %}"
+                alt=""
+            /></noscript>
+          </div>
+          <div class="info">
+            <div class="date">
+              <span>{{blog.month}} {{blog.day}},{{blog.year}}</span>
+            </div>
+            <a href="#">
+              <h3>{{blog.bloghead}}</h3>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% comment %}
+      <div class="col-lg-4 col-md-6">
+        <div class="single_trip">
+          <div class="thumb">
+            <img
+              src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}"
+              alt=""
+            /><noscript
+              ><img
+                src="{% static 'img/trip/x2.png.pagespeed.ic.D_-MpLnpCh.jpg' %}"
+                alt=""
+            /></noscript>
+          </div>
+          <div class="info">
+            <div class="date">
+              <span>Oct 12, 2019</span>
+            </div>
+            <a href="#">
+              <h3>Journeys Are Best Measured In New Friends</h3>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="single_trip">
+          <div class="thumb">
+            <img
+              src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}"
+              alt=""
+            /><noscript
+              ><img
+                src="{% static 'img/trip/x3.png.pagespeed.ic.RmfAcV7rf9.jpg' %}"
+                alt=""
+            /></noscript>
+          </div>
+          <div class="info">
+            <div class="date">
+              <span>Oct 12, 2019</span>
+            </div>
+            <a href="#">
+              <h3>Journeys Are Best Measured In New Friends</h3>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endcomment %}
+    </div>
+  </div>
 </div>
 
-
-
-
-    
 {% endblock %}
-
-

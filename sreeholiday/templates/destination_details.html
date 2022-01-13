@@ -2,97 +2,92 @@
 {% load static %}
 {% block content %}
 
-    <div class="destination_banner_wrap overlay" style="background-image:url({{package.image.url}})">
-        <div class="destination_text text-center">
-            <h3>{{package.place}} </h3>
-            {% if package.shortdiscription %}
-            <p>{{package.shortdiscription}}</p>
-            {% endif %}
-        </div>
+<div class="destination_banner_wrap overlay" style="background-image:url({{package.image.url}})">
+    <div class="destination_text text-center">
+        <h3>{{package.place}} </h3>
+        {% if package.shortdiscription %}
+        <p>{{package.shortdiscription}}</p>
+        {% endif %}
     </div>
-    <div class="destination_details_info">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-9">
-                    <div class="destination_info">
-                        <h3>Description</h3>
-                        <p>{{package.discription| safe}}</p>
-                        {% for event in events %}
-                        <div class="single_destination row">
-                            <div class="col-12 col-lg-12">
-                                <h4>{{event.eventHead}}</h4>
-                            </div>
-                            <div class="col-lg-12 col-12 destsmallimg row">
-                                <div class="col-lg-3 col-sm-4 text-center">
-                                    {% if event.image %}
-                                    <img src="{{event.image.crop.200x200}}">
-                                    {% endif %}
-                                </div>
-                                
-                            </div>
-                            <div class="col-12 col-lg-12">
-                                <p>{{event.shortdiscription | safe}}</p>
-                            </div>
+</div>
+<div class="destination_details_info">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-9">
+                <div class="destination_info">
+                    <h3>Description</h3>
+                    <p>{{package.discription| safe}}</p>
+                    {% for event in events %}
+                    <div class="single_destination row">
+                        <div class="col-12 col-lg-12">
+                            <h4>{{event.eventHead}}</h4>
                         </div>
-                        {% endfor %}
-                    </div>
-                    <div class="bordered_1px"></div>
-                    <div class="contact_join">
-                        <h3>Contact</h3>
-                        <form action="#">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="single_input">
-                                        <input type="text" placeholder="Your Name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="single_input">
-                                        <input type="text" placeholder="Phone no.">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="single_input">
-                                        <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="submit_btn">
-                                        <button class="boxed-btn4" type="submit">submit</button>
-                                    </div>
-                                </div>
+                        <div class="col-lg-12 col-12 destsmallimg row">
+                            <div class="col-lg-3 col-sm-4 text-center">
+                                {% if event.image %}
+                                <img src="{{event.image.crop.200x200}}">
+                                {% endif %}
                             </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="newletter_area overlay">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-10">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="newsletter_text">
-                                <h4>Subscribe Our Newsletter</h4>
-                                <p>Subscribe newsletter to get offers and about
-                                    new places to discover.</p>
+                        </div>
+                        <div class="col-12 col-lg-12">
+                            <p>{{event.shortdiscription | safe}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="bordered_1px"></div>
+                <div class="contact_join">
+                    <h3>Book Now</h3>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single_input">
+                                    <input type="text" name="name" required placeholder="Your Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single_input">
+                                    <input type="text" name="phone" required placeholder="Phone no.">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="submit_btn">
+                                    <button class="boxed-btn4" type="submit">submit</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="mail_form">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-9 col-md-8">
-                                        <div class="newsletter_field">
-                                            <input type="email" placeholder="Your mail">
-                                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="newletter_area overlay">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-10">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="newsletter_text">
+                            <h4>Subscribe Our Newsletter</h4>
+                            <p>Subscribe newsletter to get offers and about
+                                new places to discover.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="mail_form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-9 col-md-8">
+                                    <div class="newsletter_field">
+                                        <input type="email" placeholder="Your mail">
                                     </div>
-                                    <div class="col-lg-3 col-md-4">
-                                        <div class="newsletter_btn">
-                                            <button class="boxed-btn4 " type="submit">Subscribe</button>
-                                        </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="newsletter_btn">
+                                        <button class="boxed-btn4 " type="submit">Subscribe</button>
                                     </div>
                                 </div>
                             </div>
@@ -102,53 +97,104 @@
             </div>
         </div>
     </div>
+</div>
 
-    <div class="popular_places_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>More Places</h3>
-                    </div>
+<div class="popular_places_area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb_70">
+                    <h3>More Places</h3>
                 </div>
             </div>
-            <div class="row">
-                {% for package in packages %}
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <a href="{% url 'web:destination' package.slug %}">
+        </div>
+        <div class="row">
+            {% for package in packages %}
+            <div class="col-lg-4 col-md-6">
+                <div class="single_place">
+                    <div class="thumb">
+                        <a href="{% url 'web:destination' package.slug %}">
                             <img src="{{package.image.crop.350x197}}" alt=""><noscript><img
-                                    src="{% static 'img/place/x1.png.pagespeed.ic._C7q_9jAJk.jpg' %}" alt=""></noscript></a>
-                                    {% if package.price  %}
-                                    <a href="#" class="prise">₹{{package.price}}</a>
-                                    {% endif %}
-                        </div>
-                        <div class="place_info">
-                            <a href="{% url 'web:destination' package.slug  %}">
-                                <h3>{{package.place}}</h3>
-                            </a>
-                            <p>{{package.district}},{{package.state}}</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                    <!-- <i class="fa fa-star"></i>
+                                    src="{% static 'img/place/x1.png.pagespeed.ic._C7q_9jAJk.jpg' %}"
+                                    alt=""></noscript></a>
+                        {% if package.price %}
+                        <a href="#" class="prise">₹{{package.price}}</a>
+                        {% endif %}
+                    </div>
+                    <div class="place_info">
+                        <a href="{% url 'web:destination' package.slug  %}">
+                            <h3>{{package.place}}</h3>
+                        </a>
+                        <p>{{package.district}},{{package.state}}</p>
+                        <div class="rating_days d-flex justify-content-between">
+                            <span class="d-flex justify-content-center align-items-center">
+                                <!-- <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i> -->
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">{{package.days}} days</a>
-                                </div>
+                            </span>
+                            <div class="days">
+                                <i class="fa fa-clock-o"></i>
+                                <a href="#">{{package.days}} days</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
     </div>
-    
-    {% endblock %}
+</div>
+
+
+
+
+
+</div>
+
+   
+    {% if is_post %}
+    <div class="row box">
+        <div class=" col-lg-12 text-center" style="padding: 10px;">
+            <h2>Join with us</h2>
+           
+        </div>
+            
+            <div class="col-lg-6 text-center">
+                <h4>Name :</h4>
+            </div>
+            <div class="col-lg-6 ">
+                <h5>{{name}}</h2>
+            </div>
+
+            <div class="col-lg-6 text-center">
+                <h4>Phone :</h4>
+            </div>
+            <div class="col-lg-6 ">
+                <h5>{{phone}}</h5>
+            </div>
+
+            <div class="col-lg-6 text-center">
+                <h4>Package :</h4>
+            </div>
+            <div class="col-lg-6 " >
+                <h5>{{package.place}} </h5>
+            </div>
+
+            
+
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <a href="{{messageLink}}" target="blank" class="btn btn-primary whatsapp-btn"> Confirm</a>
+                </div>
+            </div>
+       
+    </div>
+    {% endif %}
+
+
+
+
+{% endblock %}

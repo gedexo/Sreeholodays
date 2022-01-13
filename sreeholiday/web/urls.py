@@ -10,4 +10,5 @@ urlpatterns = [
     path('destinations/', travel_destination,name="destinations"),
     path('blog/', blog,name="blog"),
     path('blogdetails/<str:slug>/', blogdetails,name="blogdetails"),
+    path('bookfleet/<int:id>/', bookfleet,name="bookfleet"),
 ]
