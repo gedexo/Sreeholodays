@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+
 <div class="slider_area">
   <div class="slider_active owl-carousel">
     {% for slideImage in slideImages %}
@@ -32,22 +33,30 @@
       </div>
       <div class="col-lg-9">
         <div class="search_wrap">
-          <form class="search_form" action="#">
+          <form class="search_form" method="POST" action="#">
+            {% csrf_token %}
             <div class="input_field">
-              <input type="text" placeholder="Where to go?" />
+              <input name="name" type="text" placeholder="Your Name" required />
             </div>
             <div class="input_field">
-              <input id="datepicker" placeholder="Date" />
+              <input id="datepicker" name="dateof" placeholder="Date" required />
             </div>
             <div class="input_field">
-              <select>
-                <option data-display="Travel type">Travel type</option>
-                <option value="1">Some option</option>
-                <option value="2">Another option</option>
+              <select name="wherego" required>
+                <option data-display="Where to go?">Where to go?</option>
+                <option data-display="Wayanad">Wayanad</option>
+                <option data-display="Adhirapally">Adhirapally water falls</option>
+                <option data-display="Fort Kochi">Fort Kochi</option>
+                <option data-display="Poovar">Poovar</option>
+                <option data-display="Alleppey">Alleppey</option>
+                <option data-display="Thekkady">Thekkady</option>
+                <option data-display="Cherai Beach">Cherai Beach</option>
+                <option data-display="Munnar">Munnar</option>
+                <option data-display="Kovalam">Kovalam</option>
               </select>
             </div>
             <div class="search_btn">
-              <button class="boxed-btn4" type="submit">Search</button>
+              <button class="boxed-btn4" type="submit">Enquiry</button>
             </div>
           </form>
         </div>
@@ -63,14 +72,14 @@
         <div class="section_title text-center mb_70">
           <h3>Our Packages</h3>
           <p>
-            Explore the elegance of the go’s own country - Kerala and unlock the
+            Explore the elegance of the god’s own country - Kerala and unlock the
             best ever offers for you.
           </p>
         </div>
       </div>
     </div>
     <div class="row">
-      {% for package in packages %}
+      {% for package in packages|slice:":9" %}
       <div class="col-lg-4 col-md-6">
         <div class="single_place">
           <div class="thumb">
@@ -99,8 +108,10 @@
                                 <i class="fa fa-star"></i> -->
               </span>
               <div class="days">
+                {% if package.days %}
                 <i class="fa fa-clock-o"></i>
                 <a href="#">{{package.days}} days</a>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -409,7 +420,7 @@
       </div>
     </div>
     <div class="row">
-      {% for blog in blogs %}
+      {% for blog in blogs|slice:":3" %}
       <div class="col-lg-4 col-md-6">
         <div class="single_trip">
           <div class="thumb">
@@ -422,7 +433,7 @@
           </div>
           <div class="info">
             <div class="date">
-              <span>{{blog.month}} {{blog.day}},{{blog.year}}</span>
+              <span>{% if blog.month %}{{blog.month}} {% endif %} {% if blog.day %}{{blog.day}},{% endif %}  {% if blog.year %}{{blog.year}}{% endif %}</span>
             </div>
             <a href="{% url 'web:blogdetails' blog.slug %}">
               <h3>{{blog.bloghead}}</h3>
@@ -479,5 +490,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}

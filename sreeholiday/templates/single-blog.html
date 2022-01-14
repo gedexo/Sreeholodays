@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Recent Trip</h3>
+                        <h3>Recent Trips</h3>
                     </div>
                 </div>
             </div>
@@ -27,8 +27,7 @@
                                 </div>
                                 <p>{{blog.month}} {{blog.day}}, {%if blog.year %}{{blog.year}}{% endif %}</p>
                         <div class="blog_details">
-                            <h2>Second divided from form fish beast made every of seas
-                                all gathered us saying he our
+                            <h2>{{blog.bloghead}}
                             </h2>
                             <ul class="blog-info-link mt-3 mb-4">
                               
@@ -109,11 +108,11 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Recent Trips</h3>
+                            <h3 class="widget_title">Other Blogs</h3>
                             {% for recentblog in recentblogs %}
                             <div class="media post_item">
                                 <a href="{% url 'web:blogdetails' recentblog.slug %}">
-                                <img src="{% static 'img/post/xpost_1.png.pagespeed.ic.VhSDC65MTC.jpg' %}" alt="post"><noscript><img
+                                <img src="{{recentblog.image.crop.100x80}}" alt="post"><noscript><img
                                         src="{% static 'img/post/xpost_1.png.pagespeed.ic.VhSDC65MTC.jpg' %}" alt="post"></noscript></a>
                                 <div class="media-body">
                                     <a href="{% url 'web:blogdetails' recentblog.slug %}">

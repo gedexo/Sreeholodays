@@ -153,10 +153,16 @@ h3 {
   left: 150px;
   color: #fff;
 }
+
 .owl-carousel .owl-nav div.owl-next {
   left: auto;
   right: 150px;
 }
+.slider_areafleet .owl-carousel .owl-nav div.owl-next {
+  left: auto;
+  right: 18px;
+}
+
 .owl-carousel .owl-nav div.owl-next i {
   position: relative;
   right: 0;
@@ -724,6 +730,12 @@ h3 {
   background-repeat: no-repeat;
   background-position: center center;
 }
+.slider_areafleet .single_sliderfleet {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color:white;
+}
 @media (max-width: 767px) {
   .slider_area .single_slider {
     height: auto;
@@ -769,6 +781,14 @@ h3 {
   }
 }
 .slider_area .single_slider .slider_text p {
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  margin-top: 33px;
+  margin-bottom: 49px;
+}
+
+.slider_areafleet .single_sliderfleet .slider_textfleet p {
   font-size: 20px;
   font-weight: 400;
   color: #fff;

@@ -19,37 +19,45 @@
 
 
     <div class="where_togo_area">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <div class="form_area">
-                        <h3>Where you want to go?</h3>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="search_wrap">
-                        <form class="search_form" action="#">
-                            <div class="input_field">
-                                <input type="text" placeholder="Where to go?">
-                            </div>
-                            <div class="input_field">
-                                <input id="datepicker" placeholder="Date">
-                            </div>
-                            <div class="input_field">
-                                <select>
-                                    <option data-display="Travel type">Travel type</option>
-                                    <option value="1">Some option</option>
-                                    <option value="2">Another option</option>
-                                </select>
-                            </div>
-                            <div class="search_btn">
-                                <button class="boxed-btn4 " type="submit">Search</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-3">
+            <div class="form_area">
+              <h3>Where you want to go?</h3>
             </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="search_wrap">
+              <form class="search_form" method="POST" action="#">
+                {% csrf_token %}
+                <div class="input_field">
+                  <input name="name" type="text" placeholder="Your Name" required />
+                </div>
+                <div class="input_field">
+                  <input id="datepicker" name="dateof" placeholder="Date" required />
+                </div>
+                <div class="input_field">
+                  <select name="wherego" required>
+                    <option data-display="Where to go?">Where to go?</option>
+                    <option data-display="Wayanad">Wayanad</option>
+                    <option data-display="Adhirapally">Adhirapally water falls</option>
+                    <option data-display="Fort Kochi">Fort Kochi</option>
+                    <option data-display="Poovar">Poovar</option>
+                    <option data-display="Alleppey">Alleppey</option>
+                    <option data-display="Thekkady">Thekkady</option>
+                    <option data-display="Cherai Beach">Cherai Beach</option>
+                    <option data-display="Munnar">Munnar</option>
+                    <option data-display="Kovalam">Kovalam</option>
+                  </select>
+                </div>
+                <div class="search_btn">
+                  <button class="boxed-btn4" type="submit">Enquiry</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <div class="popular_places_area">
@@ -78,8 +86,10 @@
                                             
                                         </span>
                                         <div class="days">
-                                            <i class="fa fa-clock-o"></i>
-                                            <a href="#">{{package.days}} days</a>
+                                          {% if package.days %}
+                                          <i class="fa fa-clock-o"></i>
+                                          <a href="#">{{package.days}} days</a>
+                                          {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +166,7 @@
                 </div>
                 <div class="info">
                   <div class="date">
-                    <span>{{blog.month}} {{blog.day}},{{blog.year}}</span>
+                    <span>{% if blog.month %}{{blog.month}} {% endif %} {% if blog.day %}{{blog.day}},{% endif %}  {% if blog.year %}{{blog.year}}{% endif %}</span>
                   </div>
                   <a href="{% url 'web:blogdetails' blog.slug %}">
                     <h3>{{blog.bloghead}}</h3>

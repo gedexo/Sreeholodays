@@ -27,11 +27,12 @@
                         <div class="col-lg-4">
                         <article class="blog_item">
                             <div class="blog_item_img">
+                                <a class="d-inline-block" href="{% url 'web:blogdetails' blog.slug %}">
                                 <img class="card-img rounded-0"
                                     src="{{blog.image.crop.730x365}}" alt=""><noscript><img
                                         class="card-img rounded-0"
-                                        src="{% static 'img/blog/xsingle_blog_1.png.pagespeed.ic.Fwk-gqJS2v.jpg' %}" alt=""></noscript>
-                                <a href="#" class="blog_item_date">
+                                        src="{% static 'img/blog/xsingle_blog_1.png.pagespeed.ic.Fwk-gqJS2v.jpg' %}" alt=""></noscript></a>
+                                <ahref="{% url 'web:blogdetails' blog.slug %}" class="blog_item_date">
                                     <h3>{{blog.day}}</h3>
                                     <p>{{blog.month}}</p>
                                 </a>

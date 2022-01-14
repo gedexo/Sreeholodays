@@ -1,3 +1,4 @@
+from statistics import mode
 from django.db import models
 from django.db.models.base import Model, ModelStateFieldsCacheDescriptor
 from django.db.models.fields import BLANK_CHOICE_DASH
@@ -26,6 +27,7 @@ class Packages(models.Model):
     price =models.IntegerField(null=True,blank=True)
     shortdiscription=models.TextField(blank=True,null=True)
     discription=HTMLField(blank=True,null=True)
+    display_in_home=models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.place)
@@ -53,6 +55,7 @@ class Blog(models.Model):
     year=models.CharField(max_length=225,blank=True,null=True)
     description=HTMLField(blank=True,null=True)
     slug = models.SlugField()
+    display_in_home=models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.bloghead)
