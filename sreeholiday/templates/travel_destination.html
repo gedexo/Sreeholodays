@@ -77,7 +77,7 @@
                                             {% endif %}
                                 </div>
                                 <div class="place_info">
-                                    <a href="destination_details.html">
+                                    <a href="{% url 'web:destination' package.slug %}">
                                         <h3>{{package.place}}</h3>
                                     </a>
                                     <p>{{package.district}},{{package.state}}</p>

@@ -138,8 +138,10 @@
                                     <i class="fa fa-star"></i> -->
                             </span>
                             <div class="days">
-                                <i class="fa fa-clock-o"></i>
-                                <a href="#">{{package.days}} days</a>
+                                {% if package.days %}
+                                          <i class="fa fa-clock-o"></i>
+                                          <a href="#">{{package.days}} days</a>
+                                          {% endif %}
                             </div>
                         </div>
                     </div>

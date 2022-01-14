@@ -1167,6 +1167,7 @@ h3 {
   .bradcam_area {
     padding: 120px 0;
   }
+  
 }
 .bradcam_area::before {
   position: absolute;
@@ -1182,6 +1183,10 @@ h3 {
 @media (max-width: 767px) {
   .bradcam_area {
     padding: 150px 0;
+  }
+  .sree{
+    width: 40% !important;
+
   }
 }
 .bradcam_area h3 {
