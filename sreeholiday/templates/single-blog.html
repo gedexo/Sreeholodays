@@ -118,7 +118,7 @@
                                     <a href="{% url 'web:blogdetails' recentblog.slug %}">
                                         <h3>{{recentblog.bloghead}}</h3>
                                     </a>
-                                    <p>{{recentblog.month}} {{recentblog.day}}, {{recentblog.year}}</p>
+                                    <p>{{recentblog.month}} {{recentblog.day}} {% if recentblog.year %} , {{recentblog.year}} {% endif %}</p>
                                 </div>
                             </div>
                             {% endfor %}
