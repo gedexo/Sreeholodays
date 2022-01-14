@@ -14,7 +14,7 @@
         <div class="card-head" style="padding: 20px">
           <h5>Confirm Your Ride</h5>
         </div>
-        {% if {{fleet.image}} %}
+        {% if fleet.image.url %}
         <img class="card-img-top cardimage" src="{{fleet.image.crop.360x250}}" alt="Card image cap" />
         {% endif %}
         <div class="card-body">
@@ -50,18 +50,27 @@
         </div>
         <div class="slider_areafleet">
           <div class="slider_active owl-carousel">
+            {% if fleet.image.url %}
             <div class="single_sliderfleet">
-              <img class="card-img-top cardimage" src="{{fleet.image.crop.280x200}}" alt="Card image cap" />
+              <img class="card-img-top cardimage" src="{{fleet.image.url}}" alt="Card image cap" />
             </div>
+            {% endif %}
+            {% if fleet.image_two.url %}
             <div class="single_sliderfleet">
-              <img class="card-img-top cardimage" src="{{fleet.image_two.crop.280x200}}" alt="Card image cap" />
+              <img class="card-img-top cardimage" src="{{fleet.image_two.url}}" alt="Card image cap" />
             </div>
+            {% endif %}
+            {% if fleet.image_three.url %}
             <div class="single_sliderfleet">
-              <img class="card-img-top cardimage" src="{{fleet.image_three.crop.280x200}}" alt="Card image cap" />
+              <img class="card-img-top cardimage" src="{{fleet.image_three.url}}" alt="Card image cap" />
             </div>
+            {% endif %}
+
+            {% if fleet.image_four.url %}
             <div class="single_sliderfleet">
-              <img class="card-img-top cardimage" src="{{fleet.image_four.crop.280x200}}" alt="Card image cap" />
+              <img class="card-img-top cardimage" src="{{fleet.image_four.url}}" alt="Card image cap" />
             </div>
+            {% endif %}
           </div>
         </div>
         <div class="card-body">

@@ -26,6 +26,7 @@ class Packages(models.Model):
     days=models.IntegerField(null=True,blank=True)
     price =models.IntegerField(null=True,blank=True)
     shortdiscription=models.TextField(blank=True,null=True)
+    discription_heading=models.CharField(max_length=225,null=True,blank=True)
     discription=HTMLField(blank=True,null=True)
     display_in_home=models.BooleanField(default=True)
 

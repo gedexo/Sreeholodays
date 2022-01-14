@@ -3862,6 +3862,9 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  #vedioframe{
+    width:365px !important;
+  }
   .box{
     background: #fff;
     border-radius: 40px;
@@ -3893,4 +3896,8 @@ h6 {
  }
  .footerlogo{
   width: 195px;
+ }
+
+ #vedioframe{
+   width:1000px
  }
