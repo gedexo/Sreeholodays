@@ -62,6 +62,13 @@ class OurFleets(models.Model):
     name=models.CharField(max_length=225)
     image=VersatileImageField(upload_to = 'fleets',ppoi_field='image_ppoi',null=True,blank=True)
     image_ppoi = PPOIField()
+    image_two=VersatileImageField(upload_to = 'fleets',ppoi_field='image_two_ppoi',null=True,blank=True)
+    image_two_ppoi = PPOIField()
+    image_three=VersatileImageField(upload_to = 'fleets',ppoi_field='image_three_ppoi',null=True,blank=True)
+    image_three_ppoi = PPOIField()
+
+    image_four=VersatileImageField(upload_to = 'fleets',ppoi_field='image_four_ppoi',null=True,blank=True)
+    image_four_ppoi = PPOIField()
     seats=models.CharField(max_length=225)
 
     def __str__(self):
