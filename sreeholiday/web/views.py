@@ -23,7 +23,7 @@ def home(request):
        context["name"]=name
        context["dateofJ"]=dateofJ
        package=Packages.objects.filter(place=wherego)
-       messageLink="https://wa.me/+919995565129?text=Hey%20I%20want%20to%20know%20about%20good%20package%20for%20visit%20following%20place"
+       messageLink="https://wa.me/918304948399?text=Hey%20I%20want%20to%20know%20about%20good%20package%20for%20visit%20following%20place"
        messageLink+="%0a"
        messageLink+="Name%20:"+name
 
@@ -83,7 +83,7 @@ def destinations_details(request,slug):
         context["name"]=name
         context["phone"]=phone
 
-        messageLink="https://wa.me/+919995565129?text=Hey%20I'm%20interested%20in%20your%20following%20package%20"
+        messageLink="https://wa.me/918304948399?text=Hey%20I'm%20interested%20in%20your%20following%20package%20"
         messageLink+="%0aPackage%20:"+package.place
         messageLink+="%0aDays%20:"+str(package.days)
         messageLink+="%0aDistrict%20:"+package.district+","+package.state
@@ -114,7 +114,7 @@ def travel_destination(request):
        context["name"]=name
        context["dateofJ"]=dateofJ
        package=Packages.objects.filter(place=wherego)
-       messageLink="https://wa.me/+919995565129?text=Hey%20I%20want%20to%20know%20about%20good%20package%20for%20visit%20following%20place"
+       messageLink="https://wa.me/918304948399?text=Hey%20I%20want%20to%20know%20about%20good%20package%20for%20visit%20following%20place"
        messageLink+="%0a"
        messageLink+="Name%20:"+name
 
@@ -172,7 +172,7 @@ def bookfleet(request,id):
         context["name"]=name
         context["phone"]=phone
         context["date"]=date
-        messageLink="https://wa.me/+919995565129?text=Hey%20I%20Would%20like%20to%20avail%20your%20following%20service"
+        messageLink="https://wa.me/918304948399?text=Hey%20I%20Would%20like%20to%20avail%20your%20following%20service"
         messageLink+="%0a"
         messageLink+="%0a"
         messageLink+="Service%20:"+fleet.name
